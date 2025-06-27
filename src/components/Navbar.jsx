@@ -1,7 +1,7 @@
 import { useState, memo } from "react";
 import { NavLink } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import { assets } from "../assets/assets"; // Adjust path as needed
+import { assets } from "../assets/assets"; 
 
 const navItems = [
   { name: "Home", href: "/" },
