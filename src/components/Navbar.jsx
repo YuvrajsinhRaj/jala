@@ -1,7 +1,7 @@
-import { useState, memo } from "react";
+import { useState, useEffect, memo } from "react";
 import { NavLink } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import { assets } from "../assets/assets"; 
+import { assets } from "../assets/assets";
 
 const navItems = [
   { name: "Home", href: "/" },
@@ -12,9 +12,34 @@ const navItems = [
 
 export default memo(function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [showNavbar, setShowNavbar] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      if (window.innerWidth < 768) {
+        if (currentScrollY > lastScrollY && currentScrollY > 50) {
+          // Scrolling down
+          setShowNavbar(false);
+        } else {
+          // Scrolling up
+          setShowNavbar(true);
+        }
+      }
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
 
   return (
-    <nav className="w-full fixed top-0 left-0 z-50 bg-white shadow-md">
+    <nav
+      className={`w-full fixed top-0 left-0 z-50 bg-white shadow-md transition-transform duration-300 ${
+        showNavbar ? "translate-y-0" : "-translate-y-full"
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16 md:h-20">
           {/* Logo */}
@@ -30,8 +55,7 @@ export default memo(function Navbar() {
                 to={item.href}
                 className={({ isActive }) =>
                   `relative text-[17px] font-medium transition-colors duration-300 ${
-                    isActive ? "text-[#2A99DE]" : "text-gray-800 hover:text-[#FA682E]"
-                  }`
+                    isActive ? "text-[#2A99DE]" : "text-gray-800 hover:text-[#FA682E]"}`
                 }
               >
                 {({ isActive }) => (
@@ -59,13 +83,13 @@ export default memo(function Navbar() {
         </div>
       </div>
 
-      {/* Slide-in Mobile Drawer */}
+      {/* Mobile Slide Menu */}
       <div
         className={`fixed top-0 right-0 h-full w-64 bg-white shadow-lg transform transition-transform duration-300 ease-in-out z-40 ${
           menuOpen ? "translate-x-0" : "translate-x-full"
         } max-h-[90vh] overflow-y-auto rounded-l-2xl`}
       >
-        {/* Close Button Inside Drawer */}
+        {/* Drawer Close Button */}
         <div className="flex justify-end p-4">
           <button onClick={() => setMenuOpen(false)} aria-label="Close">
             <X size={24} className="text-gray-800" />
@@ -81,8 +105,7 @@ export default memo(function Navbar() {
                 `block text-lg font-semibold transition-colors duration-300 ${
                   isActive
                     ? "text-[#2A99DE] underline"
-                    : "text-gray-900 hover:text-[#FA682E]"
-                }`
+                    : "text-gray-900 hover:text-[#FA682E]"}`
               }
             >
               {item.name}
@@ -91,7 +114,7 @@ export default memo(function Navbar() {
         </div>
       </div>
 
-      {/* Background Blur Overlay */}
+      {/* Overlay */}
       {menuOpen && (
         <div
           className="fixed inset-0 backdrop-blur-md bg-black/10 z-30"
