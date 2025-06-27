@@ -16,7 +16,7 @@ export default memo(function Navbar() {
   const [lastScrollY, setLastScrollY] = useState(0);
   const drawerRef = useRef(null);
 
-  // Show/hide navbar on scroll for mobile
+  // Scroll direction logic
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
@@ -34,7 +34,7 @@ export default memo(function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
 
-  // Close drawer on outside click or Escape key
+  // Outside click and Escape key
   useEffect(() => {
     const handleOutsideClick = (event) => {
       if (drawerRef.current && !drawerRef.current.contains(event.target)) {
@@ -59,6 +59,14 @@ export default memo(function Navbar() {
     };
   }, [menuOpen]);
 
+  // Prevent body scroll when drawer is open
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "auto";
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [menuOpen]);
+
   return (
     <nav
       className={`w-full fixed top-0 left-0 z-50 bg-white shadow-md transition-transform duration-300 ${
@@ -72,7 +80,7 @@ export default memo(function Navbar() {
             <img src={assets.logo} alt="Logo" className="h-12 w-auto" />
           </NavLink>
 
-          {/* Desktop Menu */}
+          {/* Desktop Navigation */}
           <div className="hidden md:flex space-x-10 items-center">
             {navItems.map((item) => (
               <NavLink
@@ -141,14 +149,6 @@ export default memo(function Navbar() {
           ))}
         </div>
       </div>
-
-      {/* Optional: background blur overlay */}
-      {menuOpen && (
-        <div
-          className="fixed inset-0 backdrop-blur-md bg-black/10 z-30"
-          onClick={() => setMenuOpen(false)}
-        />
-      )}
     </nav>
   );
 });
