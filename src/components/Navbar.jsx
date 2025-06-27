@@ -1,7 +1,7 @@
 import { useState, memo } from "react";
 import { NavLink } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import { assets } from "../assets/assets"; // Make sure the logo path is correct
+import { assets } from "../assets/assets"; 
 
 const navItems = [
   { name: "Home", href: "/" },
@@ -16,7 +16,7 @@ export default memo(function Navbar() {
   return (
     <nav className="w-full fixed top-0 left-0 z-50 bg-white shadow-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
+        <div className="flex justify-between items-center h-16 md:h-20">
           {/* Logo */}
           <NavLink to="/" onClick={() => setMenuOpen(false)} className="flex-shrink-0">
             <img src={assets.logo} alt="Logo" className="h-12 w-auto" />
