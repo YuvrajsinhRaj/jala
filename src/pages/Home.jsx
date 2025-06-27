@@ -68,12 +68,12 @@ export default function HomePage() {
               Comprehensive electrical solutions for petrochemical, chemical,
               construction, power industry, and more.
             </p>
-            <a
+            <Link
               href="/services"
               className="inline-block bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-lg transition"
             >
               View Services
-            </a>
+            </Link>
             <div className="flex justify-center lg:justify-start gap-6 pt-6 text-md flex-wrap font-semibold">
               <div className="flex items-center gap-2">
                 <span className="text-orange-500 text-xl ">✔</span> 5+ Years
