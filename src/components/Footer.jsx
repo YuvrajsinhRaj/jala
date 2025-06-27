@@ -92,6 +92,7 @@ import { assets } from "../assets/assets";
         </div>
       </div>
     </footer>
-  )};  
+  );
+    });  
 
 export default Footer;
