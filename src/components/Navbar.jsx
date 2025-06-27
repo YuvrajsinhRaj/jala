@@ -1,7 +1,7 @@
 import { useState, memo } from "react";
 import { NavLink } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import { assets } from "../assets/assets"; 
+import { assets } from "../assets/assets"; // Make sure your logo path is correct
 
 const navItems = [
   { name: "Home", href: "/" },
@@ -14,12 +14,12 @@ export default memo(function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <nav className="w-full bg-white shadow-md fixed top-0 left-0 z-50">
+    <nav className="w-full fixed top-0 left-0 z-50 bg-white shadow-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
-          <NavLink to="/" onClick={() => setMenuOpen(false)}>
-            <img src={assets.logo} alt="Logo" className="h-[52px] w-auto" />
+          <NavLink to="/" onClick={() => setMenuOpen(false)} className="flex-shrink-0">
+            <img src={assets.logo} alt="Logo" className="h-12 w-auto" />
           </NavLink>
 
           {/* Desktop Nav */}
@@ -29,8 +29,8 @@ export default memo(function Navbar() {
                 key={item.name}
                 to={item.href}
                 className={({ isActive }) =>
-                  `relative block font-semibold text-lg text-gray-800 transition-colors duration-300 ${
-                    isActive ? "" : " hover:text-orange-500"
+                  `relative text-[17px] font-medium transition-colors duration-300 ${
+                    isActive ? "text-[#2A99DE]" : "text-gray-800 hover:text-[#FA682E]"
                   }`
                 }
               >
@@ -38,7 +38,7 @@ export default memo(function Navbar() {
                   <>
                     {item.name}
                     {isActive && (
-                      <span className="absolute left-0 -bottom-1 h-1 w-full bg-blue-500"></span>
+                      <span className="absolute left-0 -bottom-1 h-[2px] w-full bg-[#2A99DE] transition-all duration-300" />
                     )}
                   </>
                 )}
@@ -46,33 +46,51 @@ export default memo(function Navbar() {
             ))}
           </div>
 
-          {/* Mobile Menu Icon */}
+          {/* Mobile Toggle */}
           <div className="md:hidden">
-            <button onClick={() => setMenuOpen(!menuOpen)}>
+            <button
+              onClick={() => setMenuOpen((prev) => !prev)}
+              className="text-gray-800 focus:outline-none"
+              aria-label="Toggle menu"
+            >
               {menuOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile Nav */}
-      {menuOpen && (
-        <div className="md:hidden bg-white shadow-md px-4 py-4 space-y-3">
+      {/* Slide-in Mobile Drawer */}
+      <div
+        className={`fixed top-0 right-0 h-full w-64 bg-white shadow-lg transform transition-transform duration-300 ease-in-out z-40 ${
+          menuOpen ? "translate-x-0" : "translate-x-full"
+        }`}
+      >
+        <div className="px-6 pt-20 space-y-6">
           {navItems.map((item) => (
             <NavLink
               key={item.name}
               to={item.href}
               onClick={() => setMenuOpen(false)}
               className={({ isActive }) =>
-                `relative block text-base font-bold transition-colors duration-300 ${
-                  isActive ? "text-blue-700 font-bold" : "text-black "
+                `block text-lg font-semibold transition-colors duration-300 ${
+                  isActive
+                    ? "text-[#2A99DE] underline"
+                    : "text-gray-900 hover:text-[#FA682E]"
                 }`
               }
             >
-              {() => <>{item.name}</>}
+              {item.name}
             </NavLink>
           ))}
         </div>
+      </div>
+
+      {/* Background Blur Overlay */}
+      {menuOpen && (
+        <div
+          className="fixed inset-0 backdrop-blur-md bg-black/10 z-30"
+          onClick={() => setMenuOpen(false)}
+        />
       )}
     </nav>
   );
