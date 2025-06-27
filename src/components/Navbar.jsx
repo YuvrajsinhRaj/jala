@@ -16,15 +16,15 @@ export default memo(function Navbar() {
   const [lastScrollY, setLastScrollY] = useState(0);
   const drawerRef = useRef(null);
 
-  // Scroll direction logic
+  // Show/hide navbar on scroll
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       if (window.innerWidth < 768) {
         if (currentScrollY > lastScrollY && currentScrollY > 50) {
-          setShowNavbar(false); // scroll down
+          setShowNavbar(false);
         } else {
-          setShowNavbar(true); // scroll up
+          setShowNavbar(true);
         }
       }
       setLastScrollY(currentScrollY);
@@ -34,16 +34,16 @@ export default memo(function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
 
-  // Outside click and Escape key
+  // Close menu on outside click and Escape
   useEffect(() => {
-    const handleOutsideClick = (event) => {
-      if (drawerRef.current && !drawerRef.current.contains(event.target)) {
+    const handleOutsideClick = (e) => {
+      if (drawerRef.current && !drawerRef.current.contains(e.target)) {
         setMenuOpen(false);
       }
     };
 
-    const handleEscape = (event) => {
-      if (event.key === "Escape") {
+    const handleEscape = (e) => {
+      if (e.key === "Escape") {
         setMenuOpen(false);
       }
     };
@@ -59,11 +59,24 @@ export default memo(function Navbar() {
     };
   }, [menuOpen]);
 
-  // Prevent body scroll when drawer is open
+  // Close menu on touch or scroll activity
   useEffect(() => {
-    document.body.style.overflow = menuOpen ? "hidden" : "auto";
+    const closeOnScrollOrTouch = () => {
+      if (window.innerWidth < 768) {
+        setMenuOpen(false);
+      }
+    };
+
+    if (menuOpen) {
+      window.addEventListener("touchstart", closeOnScrollOrTouch, { passive: true });
+      window.addEventListener("wheel", closeOnScrollOrTouch, { passive: true });
+      window.addEventListener("scroll", closeOnScrollOrTouch, { passive: true });
+    }
+
     return () => {
-      document.body.style.overflow = "auto";
+      window.removeEventListener("touchstart", closeOnScrollOrTouch);
+      window.removeEventListener("wheel", closeOnScrollOrTouch);
+      window.removeEventListener("scroll", closeOnScrollOrTouch);
     };
   }, [menuOpen]);
 
