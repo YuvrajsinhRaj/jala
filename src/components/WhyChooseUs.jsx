@@ -1,4 +1,3 @@
-import React from "react";
 import {
   BriefcaseIcon,
   PuzzlePieceIcon,
@@ -44,7 +43,7 @@ const reasons = [
 
 export default function WhyChooseUs() {
   return (
-    <section className="py-16 bg-white text-center">
+    <section className="py-16  text-center">
       <h2 className="text-3xl font-bold text-gray-800">Why Choose Us?</h2>
       <div className="h-1 w-20 bg-blue-600 mx-auto mt-4 mb-10 rounded"></div>
       <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -55,7 +54,7 @@ export default function WhyChooseUs() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: idx * 0.1 }}
             viewport={{ once: true }}
-            className="bg-orange-50 p-6 rounded-lg shadow-orange-200 shadow-md hover:shadow-xl hover:scale-105 transform transition-all duration-300"
+            className="bg-white p-6 rounded-lg  shadow-md hover:shadow-xl hover:scale-105 transform transition-all duration-300"
           >
             <Icon className="h-10 w-10 text-green-700 mb-4 mx-auto" />
             <h3 className="text-lg font-semibold text-green-700">{title}</h3>

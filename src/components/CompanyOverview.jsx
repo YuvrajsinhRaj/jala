@@ -1,73 +1,108 @@
-import React from "react";
+// import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
-import { Helmet } from "react-helmet-async";
+import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
 import companyImg from "../assets/power-station.jpeg";
 
-export default function CompanyOverview() {
+const CompanyOverview = () => {
   return (
-    <motion.section
-      className=" py-20"
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8 }}
-      viewport={{ once: true }}
-      aria-labelledby="company-overview-title"
-    >
-      <Helmet>
-        <title>Company Overview | Shree Jala Electric</title>
+    <>
+      {/* <Helmet>
         <meta
           name="description"
-          content="Since 2021, Shree Jala Electric has delivered expert testing, retrofitting, and maintenance services across India. Trusted by OEMs, utilities, and factories."
+          content="Shree Jala Electric delivers turnkey, compliant electrical solutions for pharma, petrochemical, and manufacturing sectors. Trusted by top enterprises with 5+ years of proven expertise."
         />
-      </Helmet>
+        <meta
+          name="keywords"
+          content="industrial electrical services, turnkey electrical solutions, pharma electrical contractor, petrochemical electrical services, manufacturing electrical solutions, Vadodara electrical company"
+        />
+      </Helmet> */}
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Heading */}
-        <div className="text-center mb-16">
-          <h2
-            id="company-overview-title"
-            className="text-3xl sm:text-4xl font-bold text-gray-900"
+      <section className=" py-20 px-6 md:px-12 lg:px-24">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+          {/* Text Content */}
+          <motion.div
+            initial={{ x: -50, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.6 }}
+            className="space-y-5"
           >
-            Company Overview
-          </h2>
-          <div className="h-1 w-24 bg-blue-600 mx-auto mt-4 rounded-full"></div>
-        </div>
+            <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight">
+              Powering Industrial Growth with{" "}
+              <span className="text-orange-600">
+                Reliable Electrical Expertise
+              </span>
+            </h2>
 
-        {/* Grid layout */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center bg-white rounded-xl shadow-xl overflow-hidden">
-          {/* Left: Image */}
-          <div className="h-72 md:h-full w-full overflow-hidden">
-            <img
-              src={companyImg}
-              alt="Electrical engineers on site"
-              className="w-full h-full object-cover transform hover:scale-105 transition duration-500"
-              loading="lazy"
-            />
-          </div>
-
-          {/* Right: Text content */}
-          <div className="p-6 sm:p-10">
-            <h3 className="text-2xl font-semibold text-blue-700 mb-2">
-              Shree Jala Electric
-            </h3>
-            <p className="text-gray-700 text-lg mb-4 leading-relaxed">
-              Since 2021, Shree Jala Electric has empowered industrial
-              operations across India with reliable, standards-compliant
-              electrical services. Based in Vadodara, we specialize in
-              minimizing downtime and maximizing safety for OEMs, utilities, and
-              high-voltage installations.
+            <p className="text-gray-700 text-lg leading-relaxed max-w-xl">
+              Since 2021, <strong>Shree Jala Electric</strong> has delivered
+              turnkey, compliance-driven electrical solutions to India’s leading
+              pharma, petrochemical, and manufacturing companies.
             </p>
 
-            <ul className="list-disc list-inside text-gray-800 space-y-2 text-base">
-              <li>Certified and experienced electrical engineers</li>
-              <li>Turnkey execution with documentation & compliance</li>
-              <li>
-                Support for LV/HV panels, transformers, protection systems
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-gray-800 text-base max-w-xl">
+              <li className="flex gap-2 items-center">
+                <span className="text-orange-600 font-bold text-xl">✔</span>
+                5+ years proven industry expertise
+              </li>
+              <li className="flex gap-2 items-center">
+                <span className="text-orange-600 font-bold text-xl">✔</span>
+                Specialized in critical industrial sectors
+              </li>
+              <li className="flex gap-2 items-center">
+                <span className="text-orange-600 font-bold text-xl">✔</span>
+                End-to-end turnkey execution & compliance
+              </li>
+              <li className="flex gap-2 items-center">
+                <span className="text-orange-600 font-bold text-xl">✔</span>
+                Certified electrical engineers & technicians
               </li>
             </ul>
-          </div>
+
+            <Link
+              to="/about"
+              className="mt-6 inline-flex items-center gap-2 border-1 text-blue-500 font-semibold px-7 py-3 rounded-xl shadow-lg hover:bg-blue-500 hover:text-white  transition"
+            >
+              Know More <ArrowRight className="w-4 h-4" />
+            </Link>
+          </motion.div>
+
+          {/* Image & Stats */}
+          <motion.div
+            initial={{ x: 50, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.6 }}
+            className="flex flex-col gap-6"
+          >
+            <img
+              src={companyImg}
+              alt="Industrial electrical services by Shree Jala Electric in Vadodara"
+              className="w-full rounded-3xl shadow-2xl object-cover max-h-[400px]"
+            />
+
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 text-center bg-gradient-to-r from-blue-400  to-orange-400 shadow-md rounded-2xl py-5 px-8">
+              <div>
+                <h3 className="text-3xl font-extrabold text-white/90">15+</h3>
+                <p className="text-sm text-white"> Clients</p>
+              </div>
+              <div>
+                <h3 className="text-3xl font-extrabold text-white/90">26+</h3>
+                <p className="text-sm text-white">Turnkey Projects</p>
+              </div>
+              <div>
+                <h3 className="text-3xl font-extrabold text-white/90">5+</h3>
+                <p className="text-sm text-white">Years Experience</p>
+              </div>
+              <div>
+                <h3 className="text-3xl font-extrabold text-white/90">100%</h3>
+                <p className="text-sm text-white">Compliance Rate</p>
+              </div>
+            </div>
+          </motion.div>
         </div>
-      </div>
-    </motion.section>
+      </section>
+    </>
   );
-}
+};
+
+export default CompanyOverview;

@@ -1,5 +1,3 @@
-import React from "react";
-
 const ContactUs = () => {
   return (
     <div className="bg-gradient-to-br from-white via-blue-50 to-orange-50 min-h-screen w-full py-20 px-6 flex flex-col lg:flex-row items-start justify-center gap-12">

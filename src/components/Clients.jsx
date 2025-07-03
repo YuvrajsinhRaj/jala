@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import { clients } from "../assets/assets";
-import { Helmet } from "react-helmet-async";
 
 export default function Clients() {
   const containerRef = useRef(null);
@@ -34,14 +33,6 @@ export default function Clients() {
 
   return (
     <section className="py-16 bg-white" aria-labelledby="clients-heading">
-      <Helmet>
-        <title>Trusted by Top Brands | Our Clients</title>
-        <meta
-          name="description"
-          content="Explore the companies and brands that trust us for reliable electrical and technical services. We serve OEMs, factories, utilities, and government sectors."
-        />
-      </Helmet>
-
       <div className="max-w-7xl mx-auto px-4 text-center">
         <h2
           id="clients-heading"

@@ -1,4 +1,4 @@
-import { Helmet } from "react-helmet-async";
+// import { Helmet } from "react-helmet-async";
 import HeroSection from "../components/HeroSection";
 import CompanyOverview from "../components/CompanyOverview";
 import ServicesPreview from "../components/ServicesPreview";
@@ -12,7 +12,7 @@ import Clients from "../components/Clients";
 export default function HomePage() {
   return (
     <div className="bg-gray-50 text-gray-800 mt-14">
-      <Helmet>
+      {/* <Helmet>
         <title>
           Shree Jala Electric | Industrial Electrical Contractors in India
         </title>
@@ -33,16 +33,16 @@ export default function HomePage() {
         <meta property="og:image" content="/logo.png" />
         <meta property="og:url" content="https://www.shreejalaelectric.com" />
         <meta name="twitter:card" content="summary_large_image" />
-      </Helmet>
+      </Helmet> */}
 
       <HeroSection />
       <CompanyOverview />
       <ServicesPreview />
       <IndustriesWeServe />
-      <WhyChooseUs />
+      <Clients />
       <StatsCounter />
       <Testimonials />
-      <Clients />
+      <WhyChooseUs />
       <ContactCTA />
     </div>
   );

@@ -1,11 +1,10 @@
-import { Helmet } from "react-helmet-async";
+// import { Helmet } from "react-helmet-async";
 import heroImage from "../assets/hero-image.jpeg";
 
 const HeroIndustrial = () => {
   return (
     <>
-      <Helmet>
-        <title>Reliable Electrical Services | Nationwide & Compliant</title>
+      {/* <Helmet>
         <meta
           name="description"
           content="Turnkey electrical systems for OEMs, factories, utilities & government. Engineered for uptime, safety, and trust."
@@ -14,7 +13,7 @@ const HeroIndustrial = () => {
           name="keywords"
           content="industrial electrical systems, OEM electrical contractor, power distribution, compliant systems, electrical automation, turnkey services"
         />
-      </Helmet>
+      </Helmet> */}
 
       <section
         className="relative w-full"
