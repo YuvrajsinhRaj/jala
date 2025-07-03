@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ScrollToTop from "./functionality/ScrollToTop";
+import { Analytics } from "@vercel/analytics/next";
 
 const Home = React.lazy(() => import("./pages/Home"));
 const AboutUs = React.lazy(() => import("./pages/AboutUs"));
@@ -12,6 +13,7 @@ const ContactUs = React.lazy(() => import("./pages/ContactUs"));
 function App() {
   return (
     <BrowserRouter>
+      <Analytics />
       <ScrollToTop />
       <Navbar />
       <Suspense
