@@ -1,4 +1,3 @@
-// import { Helmet } from "react-helmet-async";
 import HeroSection from "../components/HeroSection";
 import CompanyOverview from "../components/CompanyOverview";
 import ServicesPreview from "../components/ServicesPreview";
@@ -11,30 +10,7 @@ import Clients from "../components/Clients";
 
 export default function HomePage() {
   return (
-    <div className="bg-gray-50 text-gray-800 mt-14">
-      {/* <Helmet>
-        <title>
-          Shree Jala Electric | Industrial Electrical Contractors in India
-        </title>
-        <meta
-          name="description"
-          content="Shree Jala Electric delivers futuristic, reliable, and safe electrical services for petrochemical, power, and manufacturing sectors across India."
-        />
-        <meta
-          name="keywords"
-          content="Industrial Electrical Contractors, Electrical Services India, Electrical Retrofitting, Safety Audits, Panel Installation, Pan-India Electrical Solutions"
-        />
-        <meta name="author" content="Shree Jala Electric" />
-        <meta property="og:title" content="Shree Jala Electric" />
-        <meta
-          property="og:description"
-          content="Your strategic partner in industrial electrical innovation and safety. Serving industries across India."
-        />
-        <meta property="og:image" content="/logo.png" />
-        <meta property="og:url" content="https://www.shreejalaelectric.com" />
-        <meta name="twitter:card" content="summary_large_image" />
-      </Helmet> */}
-
+    <div className="bg-gray-50 text-gray-800 mt-14 px-2 sm:px-4 md:px-8 lg:px-16 xl:px-32 py-4 sm:py-6 md:py-8 text-sm sm:text-base md:text-lg">
       <HeroSection />
       <CompanyOverview />
       <ServicesPreview />

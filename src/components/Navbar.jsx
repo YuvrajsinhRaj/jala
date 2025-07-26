@@ -119,33 +119,37 @@ export default memo(function Navbar() {
 
       {/* Navbar */}
       <nav
-        className={`w-full fixed top-0 left-0 z-50  bg-white/30 backdrop-blur-md backdrop-saturate-150 transition-all duration-500 ease-in-out ${
+        className={`w-full fixed top-0 left-0 z-50 bg-white/30 backdrop-blur-md backdrop-saturate-150 transition-all duration-500 ease-in-out ${
           showNavbar
             ? "translate-y-0 shadow-lg"
             : "-translate-y-full shadow-none"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16 sm:h-16 md:h-20">
+        <div className="max-w-7xl mx-auto px-2 sm:px-4 md:px-8 lg:px-12 xl:px-20">
+          <div className="flex justify-between items-center h-14 sm:h-16 md:h-20">
             {/* Logo */}
             <NavLink
               to="/"
               onClick={() => setMenuOpen(false)}
               className="flex-shrink-0"
             >
-              <img src={assets.logo} alt="Logo" className="h-12 w-auto" />
+              <img
+                src={assets.logo}
+                alt="Logo"
+                className="h-10 sm:h-12 md:h-14 w-auto transition-all duration-300"
+              />
             </NavLink>
 
             {/* Desktop Nav */}
-            <div className="hidden md:flex space-x-10 items-center">
+            <div className="hidden md:flex space-x-4 lg:space-x-10 items-center">
               {navItems.map((item) => (
                 <NavLink
                   key={item.name}
                   to={item.href}
                   className={({ isActive }) =>
-                    `relative text-[20px] font-medium transition-colors duration-300 ${
+                    `relative text-base sm:text-lg lg:text-[20px] font-medium transition-colors duration-300 ${
                       isActive
-                        ? " text-[#FA682E]"
+                        ? "text-[#FA682E]"
                         : "text-gray-800 hover:text-blue-600"
                     }`
                   }
@@ -178,7 +182,7 @@ export default memo(function Navbar() {
         {/* Mobile Drawer */}
         <div
           ref={drawerRef}
-          className={`fixed top-0 right-0 w-64 bg-white shadow-lg transform transition-transform duration-300 ease-in-out z-40 ${
+          className={`fixed top-0 right-0 w-4/5 max-w-xs bg-white shadow-lg transform transition-transform duration-300 ease-in-out z-40 ${
             menuOpen ? "translate-x-0" : "translate-x-full"
           } overflow-y-auto rounded-l-2xl`}
         >
@@ -194,8 +198,8 @@ export default memo(function Navbar() {
                 to={item.href}
                 onClick={() => setMenuOpen(false)}
                 className={({ isActive }) =>
-                  `block text-lg font-semibold transition-colors duration-300 ${
-                    isActive ? "text-[#FA682E] " : "text-gray-900 "
+                  `block text-base sm:text-lg font-semibold transition-colors duration-300 ${
+                    isActive ? "text-[#FA682E]" : "text-gray-900"
                   }`
                 }
               >
