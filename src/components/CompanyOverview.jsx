@@ -1,4 +1,4 @@
-// import { Helmet } from "react-helmet-async";
+
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
@@ -7,17 +7,7 @@ import companyImg from "../assets/power-station.jpeg";
 const CompanyOverview = () => {
   return (
     <>
-      {/* <Helmet>
-        <meta
-          name="description"
-          content="Shree Jala Electric delivers turnkey, compliant electrical solutions for pharma, petrochemical, and manufacturing sectors. Trusted by top enterprises with 5+ years of proven expertise."
-        />
-        <meta
-          name="keywords"
-          content="industrial electrical services, turnkey electrical solutions, pharma electrical contractor, petrochemical electrical services, manufacturing electrical solutions, Vadodara electrical company"
-        />
-      </Helmet> */}
-
+     
       <section className=" py-20 px-6 md:px-12 lg:px-24">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           {/* Text Content */}
