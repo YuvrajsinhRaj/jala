@@ -1,20 +1,10 @@
-import { Helmet } from "react-helmet-async";
+
 import heroImage from "../assets/hero-image.jpeg";
 
 const HeroIndustrial = () => {
   return (
     <>
-      {/* <Helmet>
-        <meta
-          name="description"
-          content="Turnkey electrical systems for OEMs, factories, utilities & government. Engineered for uptime, safety, and trust."
-        />
-        <meta
-          name="keywords"
-          content="industrial electrical systems, OEM electrical contractor, power distribution, compliant systems, electrical automation, turnkey services"
-        />
-      </Helmet> */}
-
+      
       <section
         className="relative w-full"
         style={{ height: "calc(100vh - 80px)", marginTop: "80px" }}
