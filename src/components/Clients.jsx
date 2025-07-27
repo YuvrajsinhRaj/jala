@@ -32,7 +32,7 @@ export default function Clients() {
   }, [isPaused]);
 
   return (
-    <section className="py-16 bg-white" aria-labelledby="clients-heading">
+    <section className="py-16 " aria-labelledby="clients-heading">
       <div className="max-w-7xl mx-auto px-4 text-center">
         <h2
           id="clients-heading"

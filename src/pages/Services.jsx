@@ -1,21 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
-
-/** ✅ Animate each section entry */
-const fadeInUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: (i = 1) => ({
-    opacity: 1,
-    y: 0,
-    transition: { delay: i * 0.2 },
-  }),
-};
-
-/** ✅ Reusable tilt & scale for card hover */
-const cardHover = {
-  hover: { scale: 1.03, rotateZ: 1 },
-};
 
 export default function Services() {
   const allServices = [
@@ -210,81 +194,66 @@ export default function Services() {
   ];
 
   return (
-    <div className="bg-gray-50 ">
+    <div className="bg-gradient-to-br from-white via-blue-50 to-orange-50 min-h-screen">
       {/* HERO */}
-      <section className="relative bg-gradient-to-r from-blue-100 via-white to-orange-100 mt-20 py-10 ">
+      <section className=" py-14 mt-16">
         <div className="max-w-6xl mx-auto px-6 text-center">
-          <motion.h1
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            className="text-4xl md:text-5xl font-extrabold text-black mb-4"
-          >
+          <h1 className="text-3xl md:text-4xl font-bold text-black mb-2">
             Our Services
-            <span className="block h-1.5 w-24 bg-gradient-to-r from-orange-400  to-blue-400 rounded-full mx-auto mt-4"></span>
-          </motion.h1>
+          </h1>
+          <div className="mx-auto mt-2 w-24 h-1.5 rounded-full bg-gradient-to-r from-orange-400 to-blue-400" />
         </div>
       </section>
 
-      {/*List Of services*/}
-      <div className="max-w-7xl mx-auto px-4 mt-4">
+      {/* Services List */}
+      <div className="max-w-7xl mx-auto px-6 py-12 space-y-20">
         {allServices.map((group, idx) => (
-          <motion.section
-            key={idx}
-            variants={fadeInUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-            custom={idx}
-            className="mb-24"
-          >
-            <div className="flex flex-col md:flex-row md:items-center mb-8 gap-6">
+          <section key={idx} className="space-y-8">
+            <div className="flex flex-col md:flex-row md:items-center md:gap-8">
               <img
                 src={group.image}
                 alt={group.category}
                 loading="lazy"
-                className="w-full md:w-1/3 h-60 object-cover rounded-xl shadow-lg"
+                className="w-full md:w-1/3 h-60 object-cover rounded-xl shadow-md"
               />
-              <h2 className="text-3xl font-bold text-orange-600">
+              <h2 className="mt-4 md:mt-0 text-3xl font-bold text-orange-600">
                 {group.category}
               </h2>
             </div>
 
             <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
               {group.services.map((svc, svcIdx) => (
-                <motion.div
+                <div
                   key={svcIdx}
-                  whileHover="hover"
-                  variants={cardHover}
-                  className="bg-white rounded-xl shadow-md border hover:shadow-xl transition-transform duration-300 p-6 flex flex-col"
+                  className="bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-lg transition-shadow p-6 flex flex-col"
                 >
                   <h3 className="text-lg font-semibold text-blue-700 mb-4">
                     {svc.title}
                   </h3>
-                  <ul className="text-gray-700 flex-grow space-y-2">
+                  <ul className="text-gray-700 flex-grow space-y-1 list-disc list-inside">
                     {svc.items.map((item, i) => (
-                      <li key={i}>• {item}</li>
+                      <li key={i}>{item}</li>
                     ))}
                   </ul>
-                </motion.div>
+                </div>
               ))}
             </div>
-          </motion.section>
+          </section>
         ))}
       </div>
 
-      {/*CTA*/}
-      <section className="py-20 bg-gradient-to-r from-blue-300 via-blue-400 to-blue-600 text-white text-center">
+      {/* CTA */}
+      <section className="py-20 bg-gradient-to-r from-blue-400 via-blue-500 to-blue-700 text-white text-center">
         <h2 className="text-3xl font-bold mb-4">
           Need Any Electrical Solution?
         </h2>
-        <p className="mb-8 max-w-xl mx-auto">
+        <p className="mb-8 max-w-xl mx-auto px-4">
           Share your electrical problems and get tailored solutions from our
           certified professionals.
         </p>
         <Link
           to="/contact"
-          className="bg-white text-blue-600 font-bold py-3 px-8 rounded-full shadow-lg hover:bg-gray-100 transition"
+          className="inline-block bg-white text-blue-700 font-bold py-3 px-8 rounded-full shadow-md hover:bg-gray-100 transition"
         >
           Contact Us
         </Link>

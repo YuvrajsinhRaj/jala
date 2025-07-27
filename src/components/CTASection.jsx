@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function ContactCTA() {
   return (
-    <section className="py-20 bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 text-white text-center">
+    <section className="py-20 bg-gradient-to-r w-full  from-blue-400 via-blue-500 to-blue-600 text-white text-center">
       <h2 className="text-3xl font-bold mb-4">
         Ready to Power Up Your Industry?
       </h2>

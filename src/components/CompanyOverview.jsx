@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
@@ -6,92 +5,76 @@ import companyImg from "../assets/power-station.jpeg";
 
 const CompanyOverview = () => {
   return (
-    <>
-     
-      <section className=" py-20 px-6 md:px-12 lg:px-24">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-          {/* Text Content */}
-          <motion.div
-            initial={{ x: -50, opacity: 0 }}
-            whileInView={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.6 }}
-            className="space-y-5"
+    <section className="pt-20 ">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center px-6">
+        {/* Text Content */}
+        <motion.div
+          initial={{ x: -50, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.6 }}
+          className="space-y-6"
+        >
+          <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 leading-snug">
+            Empowering Growth with{" "}
+            <span className="text-orange-500">Electrical Expertise</span>
+          </h2>
+
+          <p className="text-gray-700 text-lg leading-relaxed max-w-lg">
+            Since 2021, <strong>Shree Jala Electric</strong> has been the
+            trusted partner for India’s top pharma, petrochemical, and
+            manufacturing industries, delivering **turnkey electrical systems**
+            with a focus on compliance and efficiency.
+          </p>
+
+          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-gray-800 text-base max-w-md">
+            {[
+              "5+ years proven industry expertise",
+              "Specialized in critical industrial sectors",
+              "End-to-end turnkey execution & compliance",
+              "Certified electrical engineers & technicians",
+            ].map((item, idx) => (
+              <li key={idx} className="flex items-center gap-2">
+                <span className="text-orange-500 text-xl">✔</span> {item}
+              </li>
+            ))}
+          </ul>
+
+          <Link
+            to="/about"
+            className="mt-6 inline-flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-lg shadow hover:bg-blue-700 transition"
           >
-            <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight">
-              Powering Industrial Growth with{" "}
-              <span className="text-orange-600">
-                Reliable Electrical Expertise
-              </span>
-            </h2>
+            Know More <ArrowRight className="w-4 h-4" />
+          </Link>
+        </motion.div>
 
-            <p className="text-gray-700 text-lg leading-relaxed max-w-xl">
-              Since 2021, <strong>Shree Jala Electric</strong> has delivered
-              turnkey, compliance-driven electrical solutions to India’s leading
-              pharma, petrochemical, and manufacturing companies.
-            </p>
-
-            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-gray-800 text-base max-w-xl">
-              <li className="flex gap-2 items-center">
-                <span className="text-orange-600 font-bold text-xl">✔</span>
-                5+ years proven industry expertise
-              </li>
-              <li className="flex gap-2 items-center">
-                <span className="text-orange-600 font-bold text-xl">✔</span>
-                Specialized in critical industrial sectors
-              </li>
-              <li className="flex gap-2 items-center">
-                <span className="text-orange-600 font-bold text-xl">✔</span>
-                End-to-end turnkey execution & compliance
-              </li>
-              <li className="flex gap-2 items-center">
-                <span className="text-orange-600 font-bold text-xl">✔</span>
-                Certified electrical engineers & technicians
-              </li>
-            </ul>
-
-            <Link
-              to="/about"
-              className="mt-6 inline-flex items-center gap-2 border-1 text-blue-500 font-semibold px-7 py-3 rounded-xl shadow-lg hover:bg-blue-500 hover:text-white  transition"
-            >
-              Know More <ArrowRight className="w-4 h-4" />
-            </Link>
-          </motion.div>
-
-          {/* Image & Stats */}
-          <motion.div
-            initial={{ x: 50, opacity: 0 }}
-            whileInView={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.6 }}
-            className="flex flex-col gap-6"
-          >
-            <img
-              src={companyImg}
-              alt="Industrial electrical services by Shree Jala Electric in Vadodara"
-              className="w-full rounded-3xl shadow-2xl object-cover max-h-[400px]"
-            />
-
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 text-center bg-gradient-to-r from-blue-400  to-orange-400 shadow-md rounded-2xl py-5 px-8">
-              <div>
-                <h3 className="text-3xl font-extrabold text-white/90">15+</h3>
-                <p className="text-sm text-white"> Clients</p>
+        {/* Image & Stats */}
+        <motion.div
+          initial={{ x: 50, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.6 }}
+          className="flex flex-col gap-6"
+        >
+          <img
+            src={companyImg}
+            alt="Industrial electrical solutions"
+            className="w-full rounded-3xl shadow-2xl object-cover max-h-[400px]"
+          />
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center bg-gradient-to-r from-blue-500 to-orange-400 shadow-lg rounded-2xl py-5">
+            {[
+              ["15+", "Clients"],
+              ["26+", "Projects"],
+              ["5+", "Years"],
+              ["100%", "Compliance"],
+            ].map(([value, label], idx) => (
+              <div key={idx}>
+                <h3 className="text-3xl font-bold text-white">{value}</h3>
+                <p className="text-sm text-white">{label}</p>
               </div>
-              <div>
-                <h3 className="text-3xl font-extrabold text-white/90">26+</h3>
-                <p className="text-sm text-white">Turnkey Projects</p>
-              </div>
-              <div>
-                <h3 className="text-3xl font-extrabold text-white/90">5+</h3>
-                <p className="text-sm text-white">Years Experience</p>
-              </div>
-              <div>
-                <h3 className="text-3xl font-extrabold text-white/90">100%</h3>
-                <p className="text-sm text-white">Compliance Rate</p>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-    </>
+            ))}
+          </div>
+        </motion.div>
+      </div>
+    </section>
   );
 };
 

@@ -37,7 +37,7 @@ export default memo(function Navbar() {
           timeoutRef.current = setTimeout(() => {
             setShowNavbar(false);
             timeoutRef.current = null;
-          }, 200); // delay before hiding
+          }, 200);
         }
       }
 
@@ -47,7 +47,7 @@ export default memo(function Navbar() {
           clearTimeout(timeoutRef.current);
           timeoutRef.current = null;
         }
-        setShowNavbar(true); // instant show
+        setShowNavbar(true);
       }
 
       lastScrollYRef.current = currentScrollY;
@@ -125,7 +125,7 @@ export default memo(function Navbar() {
             : "-translate-y-full shadow-none"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-2 sm:px-4 md:px-8 lg:px-12 xl:px-20">
+        <div className="w-full px-2 sm:px-4 md:px-8 lg:px-12 xl:px-20">
           <div className="flex justify-between items-center h-14 sm:h-16 md:h-20">
             {/* Logo */}
             <NavLink
@@ -167,7 +167,7 @@ export default memo(function Navbar() {
             </div>
 
             {/* Mobile Toggle */}
-            <div className="md:hidden">
+            <div className="md:hidden pr-6">
               <button
                 onClick={() => setMenuOpen((prev) => !prev)}
                 className="text-gray-800 focus:outline-none"

@@ -31,43 +31,24 @@ const timeline = [
 
 export default function About() {
   return (
-    <div className="bg-white">
+    <div className="bg-gradient-to-br from-white via-blue-50 to-orange-50">
       {/* HERO */}
-      <section className="relative bg-gradient-to-r from-blue-100 via-white to-orange-100 mt-20 py-10">
+      <section className="relative  mt-20 pt-10">
         <div className="max-w-6xl mx-auto px-6 text-center">
           <motion.h1
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
-            className="text-4xl md:text-5xl font-extrabold text-black mb-4"
+            className="text-3xl md:text-4xl font-bold text-black "
           >
-            About Us
+            Who We Are
             <span className="block h-1.5 w-24  bg-gradient-to-r from-orange-400  to-blue-400 rounded-full mx-auto mt-4"></span>
           </motion.h1>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
-            className="mt-4 text-lg md:text-xl text-gray-700 max-w-3xl mx-auto"
-          >
-            Empowering industries with reliable, safe, and efficient electrical
-            solutions — backed by 5+ years of proven excellence.
-          </motion.p>
         </div>
       </section>
 
       {/* WHO WE ARE */}
-      <section className="py-20 px-6 max-w-7xl mx-auto">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-3xl md:text-4xl font-extrabold text-black text-center mb-4"
-        >
-          Who We Are
-          <span className="block h-1 w-20 bg-blue-500 rounded-full mx-auto mt-4"></span>
-        </motion.h2>
-
+      <section className="py-10 px-6 max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row items-center gap-12 mt-12">
           {/* Image */}
           <motion.img
@@ -180,7 +161,7 @@ export default function About() {
       </section>
 
       {/* JOURNEY - MINIMAL DIAGRAM STYLE */}
-      <section className="py-20 bg-white">
+      <section className="py-20 ">
         <div className="max-w-5xl mx-auto px-4">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -216,7 +197,7 @@ export default function About() {
       </section>
 
       {/* STATS */}
-      <section className="py-16 bg-white text-center">
+      <section className="py-16  text-center">
         <div className="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
           {[
             { value: "5+", label: "Years of Experience" },

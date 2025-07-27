@@ -6,13 +6,13 @@ import { ArrowRight } from "lucide-react";
 export default function ServicesPreview() {
   return (
     <motion.section
-      className=" py-16 px-6 text-center"
+      className=" pt-20 px-6 text-center"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 1 }}
       viewport={{ once: true }}
     >
-      <h2 className="text-3xl font-bold text-gray-800 mb-4">What We Do</h2>
+      <h2 className="text-4xl font-bold text-gray-800 mb-4">What We Do</h2>
       <div className="h-1 w-20 bg-blue-600 mx-auto  rounded"></div>
       <div className="max-w-2xl   mx-auto">
         <img

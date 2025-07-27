@@ -44,9 +44,13 @@ const reasons = [
 export default function WhyChooseUs() {
   return (
     <section className="py-16  text-center">
-      <h2 className="text-3xl font-bold text-gray-800">Why Choose Us?</h2>
+      <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800">
+        Why Choose Us?
+      </h2>
       <div className="h-1 w-20 bg-blue-600 mx-auto mt-4 mb-10 rounded"></div>
-      <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+      {/* Force 3×2 grid on all screen sizes */}
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 grid grid-cols-3 gap-4 sm:gap-6">
         {reasons.map(({ icon: Icon, title, text }, idx) => (
           <motion.div
             key={idx}
@@ -54,11 +58,16 @@ export default function WhyChooseUs() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: idx * 0.1 }}
             viewport={{ once: true }}
-            className="bg-white p-6 rounded-lg  shadow-md hover:shadow-xl hover:scale-105 transform transition-all duration-300"
+            className="bg-white p-3 sm:p-5 md:p-6 rounded-lg shadow-md hover:shadow-xl 
+                       hover:scale-105 transform transition-all duration-300 text-center"
           >
-            <Icon className="h-10 w-10 text-green-700 mb-4 mx-auto" />
-            <h3 className="text-lg font-semibold text-green-700">{title}</h3>
-            <p className="text-gray-600 mt-2 text-sm">{text}</p>
+            <Icon className="h-6 w-6 sm:h-8 sm:w-8 md:h-10 md:w-10 text-green-700 mb-3 mx-auto" />
+            <h3 className="text-sm sm:text-lg md:text-xl font-semibold text-green-700">
+              {title}
+            </h3>
+            <p className="text-xs sm:text-sm md:text-base text-gray-600 mt-2">
+              {text}
+            </p>
           </motion.div>
         ))}
       </div>
