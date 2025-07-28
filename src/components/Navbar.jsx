@@ -133,7 +133,7 @@ export default memo(function Navbar() {
               onClick={() => setMenuOpen(false)}
               className="flex-shrink-0"
             >
-              <img
+              <img loading="lazy"
                 src={assets.logo}
                 alt="Logo"
                 className="h-10 sm:h-12 md:h-14 w-auto transition-all duration-300"

@@ -126,7 +126,7 @@ const ContactUs = () => {
             aria-label="Instagram"
             className="transition-transform hover:scale-110"
           >
-            <img
+            <img loading="lazy"
               src="https://cdn-icons-png.flaticon.com/512/174/174855.png"
               alt="Instagram"
               className="w-8 h-8"
@@ -139,7 +139,7 @@ const ContactUs = () => {
             aria-label="X (Twitter)"
             className="transition-transform hover:scale-110"
           >
-            <img
+            <img loading="lazy"
               src="https://cdn-icons-png.flaticon.com/512/5968/5968830.png"
               alt="X"
               className="w-8 h-8"
@@ -152,7 +152,7 @@ const ContactUs = () => {
             aria-label="LinkedIn"
             className="transition-transform hover:scale-110"
           >
-            <img
+            <img loading="lazy"
               src="https://cdn-icons-png.flaticon.com/512/174/174857.png"
               alt="LinkedIn"
               className="w-8 h-8"

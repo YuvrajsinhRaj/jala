@@ -54,7 +54,7 @@ const CompanyOverview = () => {
           transition={{ duration: 0.6 }}
           className="flex flex-col gap-6"
         >
-          <img
+          <img loading="lazy"
             src={assets.pow_station}
             alt="Industrial electrical solutions"
             className="w-full rounded-3xl shadow-2xl object-cover max-h-[400px]"

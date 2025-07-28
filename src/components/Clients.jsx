@@ -5,31 +5,38 @@ export default function Clients() {
   const containerRef = useRef(null);
   const [isPaused, setIsPaused] = useState(false);
 
-  useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
 
-    let scrollAmount = 0.5;
-    let animationFrame;
+useEffect(() => {
+  const container = containerRef.current;
+  if (!container) return;
 
-    const smoothScroll = () => {
-      if (container && !isPaused) {
-        container.scrollLeft += scrollAmount;
+  let scrollAmount = 0.5;
+  let animationFrame;
+  let maxScroll = container.scrollWidth - container.clientWidth;
 
-        if (
-          container.scrollLeft >=
-          container.scrollWidth - container.clientWidth
-        ) {
-          container.scrollLeft = 0;
-        }
+  const smoothScroll = () => {
+    if (container && !isPaused) {
+      container.scrollLeft += scrollAmount;
+      if (container.scrollLeft >= maxScroll) {
+        container.scrollLeft = 0;
       }
-      animationFrame = requestAnimationFrame(smoothScroll);
-    };
-
+    }
     animationFrame = requestAnimationFrame(smoothScroll);
+  };
 
-    return () => cancelAnimationFrame(animationFrame);
-  }, [isPaused]);
+  animationFrame = requestAnimationFrame(smoothScroll);
+
+  // Recalculate maxScroll on resize
+  const handleResize = () => {
+    maxScroll = container.scrollWidth - container.clientWidth;
+  };
+  window.addEventListener("resize", handleResize);
+
+  return () => {
+    cancelAnimationFrame(animationFrame);
+    window.removeEventListener("resize", handleResize);
+  };
+}, [isPaused]);
 
   return (
     <section className="py-16 " aria-labelledby="clients-heading">
@@ -61,10 +68,10 @@ export default function Clients() {
                 role="listitem"
               >
                 <img
+                  loading="lazy"
                   src={client.logo}
                   alt={client.name}
                   className="object-contain h-16 sm:h-20 md:h-24 lg:h-28 transition-transform duration-300 hover:scale-105"
-                  loading="lazy"
                 />
               </div>
             ))}

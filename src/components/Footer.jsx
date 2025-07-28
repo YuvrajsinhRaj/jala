@@ -42,7 +42,7 @@ const Footer = memo(() => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-10">
         {/* Company Info */}
         <div>
-          <img
+          <img loading="lazy"
             src={assets.logo}
             alt="Shree Jala Electric Logo"
             className="h-14 w-auto mb-4"

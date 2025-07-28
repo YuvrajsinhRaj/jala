@@ -211,9 +211,9 @@ export default function Services() {
           <section key={idx} className="space-y-8">
             <div className="flex flex-col md:flex-row md:items-center md:gap-8">
               <img
+                loading="lazy"
                 src={group.image}
                 alt={group.category}
-                loading="lazy"
                 className="w-full md:w-1/3 h-60 object-cover rounded-xl  shadow-md"
               />
               <h2 className="mt-4 md:mt-0 text-3xl font-bold text-orange-600">

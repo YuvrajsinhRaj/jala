@@ -31,6 +31,42 @@
     <!-- Canonical URL -->
     <link rel="canonical" href="https://www.shreejalaelectric.com/" />
 
+    <!-- Preconnect for Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Inline Critical Footer CSS -->
+    <style>
+      footer { background-color: #0f172a; color: #fff; }
+      .text-white { color: #fff !important; }
+      .text-gray-300 { color: #d1d5db !important; }
+      .text-gray-400 { color: #9ca3af !important; }
+      .text-orange-400 { color: #fb923c !important; }
+      .border-t { border-top: 1px solid #374151 !important; }
+      .pt-10 { padding-top: 2.5rem !important; }
+      .pb-8 { padding-bottom: 2rem !important; }
+      .max-w-7xl { max-width: 80rem !important; }
+      .mx-auto { margin-left: auto !important; margin-right: auto !important; }
+      .px-4 { padding-left: 1rem !important; padding-right: 1rem !important; }
+      .grid { display: grid !important; }
+      .grid-cols-1 { grid-template-columns: 1fr !important; }
+      .gap-10 { gap: 2.5rem !important; }
+      .h-14 { height: 3.5rem !important; }
+      .w-auto { width: auto !important; }
+      .mb-4 { margin-bottom: 1rem !important; }
+      .text-sm { font-size: 0.875rem !important; }
+      .flex { display: flex !important; }
+      .space-x-4 > :not([hidden]) ~ :not([hidden]) { margin-left: 1rem !important; }
+      .font-semibold { font-weight: 600 !important; }
+      .not-italic { font-style: normal !important; }
+      .hover\:underline:hover { text-decoration: underline !important; }
+      .transition { transition: all 0.2s !important; }
+      .block { display: block !important; }
+      .mt-10 { margin-top: 2.5rem !important; }
+      .pt-6 { padding-top: 1.5rem !important; }
+      .text-center { text-align: center !important; }
+    </style>
+
     <!-- Open Graph (Facebook, LinkedIn, etc.) -->
     <meta
       property="og:title"
@@ -72,6 +108,6 @@
 
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+    <script type="module" src="/src/main.jsx" defer></script>
   </body>
 </html>

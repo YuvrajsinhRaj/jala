@@ -5,6 +5,8 @@ import IndustriesWeServe from "../components/IndustriesWeServe";
 import WhyChooseUs from "../components/WhyChooseUs";
 import ContactCTA from "../components/CTASection";
 import Clients from "../components/Clients";
+import React, { Suspense } from "react";
+const SomeComponent = React.lazy(() => import("../components/SomeComponent"));
 
 export default function HomePage() {
   return (
@@ -16,6 +18,9 @@ export default function HomePage() {
         <IndustriesWeServe />
         <Clients />
         <WhyChooseUs />
+        <Suspense fallback={<div>Loading...</div>}>
+          <SomeComponent />
+        </Suspense>
       </div>
       <ContactCTA />
     </main>

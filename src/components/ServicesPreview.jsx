@@ -16,6 +16,7 @@ export default function ServicesPreview() {
       <div className="h-1 w-20 bg-blue-600 mx-auto  rounded"></div>
       <div className="max-w-2xl   mx-auto">
         <img
+          loading="lazy"
           src={assets.services_home}
           alt="Services visual"
           className="rounded-lg w-full mb-4 lg:w-3/4 lg:mx-auto"
