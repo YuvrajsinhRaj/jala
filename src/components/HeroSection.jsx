@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { assets } from "../assets/assets.js";
 
-const HeroSection = () => {
+const HeroSection = React.memo(() => {
   return (
     <section
       className="relative w-full min-h-[80vh] flex items-center justify-center text-white rounded-lg"
@@ -48,7 +48,7 @@ const HeroSection = () => {
           transition={{ delay: 0.4, duration: 0.7, ease: "easeOut" }}
         >
           Reliable, compliant, and future-ready electrical solutions for
-          factories, OEMs, and utilities — built to maximize uptime and safety.
+          factories, OEMs, and utilities  built to maximize uptime and safety.
         </motion.p>
 
         {/* Buttons */}
