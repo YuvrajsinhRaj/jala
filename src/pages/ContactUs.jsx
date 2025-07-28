@@ -1,4 +1,4 @@
-const ContactUs = () => {
+const ContactUs = React.memo(() => {
   return (
     <div className="bg-gradient-to-br from-white via-blue-50 to-orange-50 min-h-screen w-full py-20 px-6 flex flex-col lg:flex-row items-start justify-center gap-12">
       {/* CONTACT FORM */}
@@ -17,19 +17,6 @@ const ContactUs = () => {
           method="POST"
           className="space-y-6"
         >
-          {/* Hidden Inputs
-          <input
-            type="hidden"
-            name="access_key"
-            value={import.meta.env.VITE_WEB3FORMS_ACCESS_KEY}
-          />
-          <input type="hidden" name="subject" value="New Contact Submission" />
-          <input type="hidden" name="from_name" value="Website Contact" />
-          <input
-            type="hidden"
-            name="redirect"
-            value="https://mail.google.com/mail/?view=cm&fs=1&to=info@shreejalaelectric.com&su=Website%20Form%20Submission%20Failed"
-          /> */}
 
           {/* Name */}
           <div>
