@@ -11,6 +11,23 @@ const HeroSection = React.memo(() => {
         backgroundPosition: "center",
       }}
     >
+      {/* Reserve space for hero image to prevent CLS */}
+      <img
+        src={assets.hero_image}
+        alt="Hero"
+        className="absolute w-full h-full object-cover rounded-lg pointer-events-none select-none"
+        style={{
+          width: "100%",
+          height: "100%",
+          minHeight: "80vh",
+          visibility: "hidden",
+          position: "absolute",
+          zIndex: 0,
+        }}
+        width={1920}
+        height={800}
+        aria-hidden="true"
+      />
       {/* Dark overlay for contrast */}
       <div className="absolute inset-0 bg-black/50 rounded-lg"></div>
 
@@ -53,7 +70,7 @@ const HeroSection = React.memo(() => {
 
         {/* Buttons */}
         <motion.div
-          className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+          className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start min-h-[60px]"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.7, ease: "easeOut" }}
@@ -74,7 +91,7 @@ const HeroSection = React.memo(() => {
 
         {/* Feature Badges */}
         <motion.div
-          className="flex flex-wrap justify-center lg:justify-start gap-4 pt-4"
+          className="flex flex-wrap justify-center lg:justify-start gap-4 pt-4 min-h-[48px]"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8, duration: 0.7, ease: "easeOut" }}
@@ -114,6 +131,6 @@ const HeroSection = React.memo(() => {
       </motion.div>
     </section>
   );
-};
+});
 
 export default HeroSection;
