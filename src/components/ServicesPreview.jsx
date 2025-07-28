@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import serviceImg from "../assets/services_home.png";
+import { assets } from "../assets/assets";
 import { ArrowRight } from "lucide-react";
 
 export default function ServicesPreview() {
@@ -16,7 +16,7 @@ export default function ServicesPreview() {
       <div className="h-1 w-20 bg-blue-600 mx-auto  rounded"></div>
       <div className="max-w-2xl   mx-auto">
         <img
-          src={serviceImg}
+          src={assets.services_home}
           alt="Services visual"
           className="rounded-lg w-full mb-4 lg:w-3/4 lg:mx-auto"
         />

@@ -1,24 +1,28 @@
-import logo from "./logo.png";
-import services_home from "./services_home.png";
-import Schneider_Electric from "./Schneider_Electric.png";
-import adani from "./adani.png";
-import LandT from "./L&T.png";
-import Jubliant_infrastructure from "./Jubliant_infrastructure.png";
-import Deepak_Phenolics from "./Deepak_Phenolics.png";
-import Jubliant_ingrevia from "./Jubliant_ingrevia.png";
-import Sharika from "./Sharika.png";
-import Deepak_ferti_petro from "./Deepak_ferti_petro.png";
-import Earth from "./Earth.png";
-import rajan_electricals from "./rajan_electricals.png";
-import Mercury from "./Mercury.png";
-import RK from "./RK.png";
-import Hollister from "./Hollister.png";
-import GLC from "./GLC.png";
-import Consort from "./Consort.png";
-import Benzo_chem from "./Benzo_chem.png";
+import logo from "./logo.webp";
+import hero_image from "./hero-image.webp";
+import pow_station from "./power-station.webp";
+import services_home from "./services_home.webp";
+import Schneider_Electric from "./clients/Schneider_Electric.png";
+import adani from "./clients/adani.png";
+import LandT from "./clients/L&T.png";
+import Jubliant_infrastructure from "./clients/Jubliant_infrastructure.png";
+import Deepak_Phenolics from "./clients/Deepak_Phenolics.png";
+import Jubliant_ingrevia from "./clients/Jubliant_ingrevia.png";
+import Sharika from "./clients/Sharika.png";
+import Deepak_ferti_petro from "./clients/Deepak_ferti_petro.png";
+import Earth from "./clients/Earth.png";
+import rajan_electricals from "./clients/rajan_electricals.png";
+import Mercury from "./clients/Mercury.png";
+import RK from "./clients/RK.png";
+import Hollister from "./clients/Hollister.png";
+import GLC from "./clients/GLC.png";
+import Consort from "./clients/Consort.png";
+import Benzo_chem from "./clients/Benzo_chem.png";
 
 export const assets = {
   logo,
+  hero_image,
+  pow_station,
   services_home,
 };
 

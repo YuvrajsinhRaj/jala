@@ -13,11 +13,11 @@ const ContactUs = () => {
         </p>
 
         <form
-          action="https://api.web3forms.com/submit"
+          action="https://formbold.com/s/oznlP"
           method="POST"
           className="space-y-6"
         >
-          {/* Hidden Inputs */}
+          {/* Hidden Inputs
           <input
             type="hidden"
             name="access_key"
@@ -29,7 +29,7 @@ const ContactUs = () => {
             type="hidden"
             name="redirect"
             value="https://mail.google.com/mail/?view=cm&fs=1&to=info@shreejalaelectric.com&su=Website%20Form%20Submission%20Failed"
-          />
+          /> */}
 
           {/* Name */}
           <div>

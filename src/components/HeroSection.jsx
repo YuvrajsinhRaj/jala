@@ -1,18 +1,18 @@
 import { motion } from "framer-motion";
-import heroImage from "../assets/hero-image.jpeg";
+import { assets } from "../assets/assets.js";
 
 const HeroSection = () => {
   return (
     <section
       className="relative w-full min-h-[80vh] flex items-center justify-center text-white rounded-lg"
       style={{
-        backgroundImage: `url(${heroImage})`,
+        backgroundImage: `url(${assets.hero_image})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
     >
       {/* Dark overlay for contrast */}
-      <div className="absolute inset-0 bg-black/50"></div>
+      <div className="absolute inset-0 bg-black/50 rounded-lg"></div>
 
       {/* Text Content */}
       <motion.div

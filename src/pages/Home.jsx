@@ -16,8 +16,8 @@ export default function HomePage() {
         <IndustriesWeServe />
         <Clients />
         <WhyChooseUs />
-        <ContactCTA />
       </div>
+      <ContactCTA />
     </main>
   );
 }

@@ -214,7 +214,7 @@ export default function Services() {
                 src={group.image}
                 alt={group.category}
                 loading="lazy"
-                className="w-full md:w-1/3 h-60 object-cover rounded-xl shadow-md"
+                className="w-full md:w-1/3 h-60 object-cover rounded-xl  shadow-md"
               />
               <h2 className="mt-4 md:mt-0 text-3xl font-bold text-orange-600">
                 {group.category}
@@ -225,7 +225,7 @@ export default function Services() {
               {group.services.map((svc, svcIdx) => (
                 <div
                   key={svcIdx}
-                  className="bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-lg transition-shadow p-6 flex flex-col"
+                  className="bg-white rounded-xl border border-orange-200  shadow-sm hover:shadow-lg transition-shadow p-6 flex flex-col"
                 >
                   <h3 className="text-lg font-semibold text-blue-700 mb-4">
                     {svc.title}
