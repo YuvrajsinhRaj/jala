@@ -1,8 +1,11 @@
-import { useState, useEffect, useRef, memo } from "react";
+import { useState, useEffect, useRef, useCallback, memo } from "react";
 import { NavLink } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { assets } from "../assets/assets";
 
+/* =======================
+   NAV ITEMS CONFIG
+======================= */
 const navItems = [
   { name: "Home", href: "/" },
   { name: "Services", href: "/services" },
@@ -10,14 +13,74 @@ const navItems = [
   { name: "Contact us", href: "/contact" },
 ];
 
+/* =======================
+   DESKTOP NAV ITEMS
+======================= */
+const DesktopNavItems = memo(() =>
+  navItems.map((item) => (
+    <NavLink
+      key={item.name}
+      to={item.href}
+      className={({ isActive }) =>
+        `relative text-base sm:text-base md:text-lg lg:text-[18px] xl:text-[20px]
+         font-medium transition-colors duration-300 ${
+           isActive ? "text-[#FA682E]" : "text-gray-800 hover:text-blue-600"
+         }`
+      }
+    >
+      {({ isActive }) => (
+        <>
+          {item.name}
+          {isActive && (
+            <span className="absolute left-0 -bottom-1 h-[2px] w-full bg-[#2A99DE]" />
+          )}
+        </>
+      )}
+    </NavLink>
+  ))
+);
+
+/* =======================
+   MOBILE NAV ITEMS
+======================= */
+const MobileNavItems = memo(({ closeMenu }) =>
+  navItems.map((item) => (
+    <NavLink
+      key={item.name}
+      to={item.href}
+      onClick={closeMenu}
+      className={({ isActive }) =>
+        `block text-base sm:text-lg md:text-xl font-semibold
+         transition-colors duration-300 ${
+           isActive ? "text-[#FA682E]" : "text-gray-900"
+         }`
+      }
+    >
+      {item.name}
+    </NavLink>
+  ))
+);
+
+/* =======================
+   NAVBAR COMPONENT
+======================= */
 export default memo(function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [showNavbar, setShowNavbar] = useState(true);
+
   const drawerRef = useRef(null);
   const lastScrollYRef = useRef(0);
-  const timeoutRef = useRef(null);
 
-  // Lock body scroll when mobile menu is open
+  /* =======================
+     STABLE CALLBACKS
+  ======================= */
+  const closeMenu = useCallback(() => {
+    setMenuOpen(false);
+  }, []);
+
+  /* =======================
+     BODY SCROLL LOCK
+  ======================= */
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
     return () => {
@@ -25,52 +88,48 @@ export default memo(function Navbar() {
     };
   }, [menuOpen]);
 
-  // Scroll-based navbar hide/show
+  /* =======================
+     SCROLL HIDE / SHOW
+  ======================= */
   useEffect(() => {
+    let ticking = false;
+
     const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      const scrollDelta = currentScrollY - lastScrollYRef.current;
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const currentScrollY = window.scrollY;
+          const delta = currentScrollY - lastScrollYRef.current;
 
-      // Scrolling down
-      if (scrollDelta > 10 && currentScrollY > 100) {
-        if (!timeoutRef.current) {
-          timeoutRef.current = setTimeout(() => {
+          if (delta > 10 && currentScrollY > 100) {
             setShowNavbar(false);
-            timeoutRef.current = null;
-          }, 200);
-        }
-      }
+          } else if (delta < -20) {
+            setShowNavbar(true);
+          }
 
-      // Scrolling up
-      if (scrollDelta < -20) {
-        if (timeoutRef.current) {
-          clearTimeout(timeoutRef.current);
-          timeoutRef.current = null;
-        }
-        setShowNavbar(true);
-      }
+          lastScrollYRef.current = currentScrollY;
+          ticking = false;
+        });
 
-      lastScrollYRef.current = currentScrollY;
+        ticking = true;
+      }
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      if (timeoutRef.current) clearTimeout(timeoutRef.current);
-    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close menu on outside click or ESC
+  /* =======================
+     CLOSE ON OUTSIDE / ESC
+  ======================= */
   useEffect(() => {
     const handleOutsideClick = (e) => {
       if (drawerRef.current && !drawerRef.current.contains(e.target)) {
-        setMenuOpen(false);
+        closeMenu();
       }
     };
+
     const handleEscape = (e) => {
-      if (e.key === "Escape") {
-        setMenuOpen(false);
-      }
+      if (e.key === "Escape") closeMenu();
     };
 
     if (menuOpen) {
@@ -82,96 +141,80 @@ export default memo(function Navbar() {
       document.removeEventListener("mousedown", handleOutsideClick);
       document.removeEventListener("keydown", handleEscape);
     };
-  }, [menuOpen]);
+  }, [menuOpen, closeMenu]);
 
-  // Close menu on scroll or touch on mobile
+  /* =======================
+     CLOSE ON MOBILE SCROLL
+  ======================= */
   useEffect(() => {
-    const closeOnScrollOrTouch = () => {
-      if (window.innerWidth < 768) {
-        setMenuOpen(false);
-      }
+    const closeOnMobileInteraction = () => {
+      if (window.innerWidth < 768) closeMenu();
     };
 
     if (menuOpen) {
-      window.addEventListener("touchstart", closeOnScrollOrTouch, {
+      window.addEventListener("touchstart", closeOnMobileInteraction, {
         passive: true,
       });
-      window.addEventListener("wheel", closeOnScrollOrTouch, { passive: true });
-      window.addEventListener("scroll", closeOnScrollOrTouch, {
+      window.addEventListener("wheel", closeOnMobileInteraction, {
+        passive: true,
+      });
+      window.addEventListener("scroll", closeOnMobileInteraction, {
         passive: true,
       });
     }
 
     return () => {
-      window.removeEventListener("touchstart", closeOnScrollOrTouch);
-      window.removeEventListener("wheel", closeOnScrollOrTouch);
-      window.removeEventListener("scroll", closeOnScrollOrTouch);
+      window.removeEventListener("touchstart", closeOnMobileInteraction);
+      window.removeEventListener("wheel", closeOnMobileInteraction);
+      window.removeEventListener("scroll", closeOnMobileInteraction);
     };
-  }, [menuOpen]);
+  }, [menuOpen, closeMenu]);
 
   return (
     <>
-      {/* Sticky Hover Zone - triggers navbar show */}
+      {/* Hover Reveal Zone (Desktop Only) */}
       <div
-        className="fixed top-0 left-0 w-full h-3 z-[60] cursor-pointer"
+        className="fixed top-0 left-0 w-full h-4 sm:h-6 z-[60] hidden md:block"
         onMouseEnter={() => setShowNavbar(true)}
       />
 
-      {/* Navbar */}
+      {/* NAVBAR */}
       <nav
-        className={`w-full fixed top-0 left-0 z-50 bg-white/30 backdrop-blur-md backdrop-saturate-150 transition-all duration-500 ease-in-out ${
+        className={`fixed top-0 left-0 w-full z-50
+        bg-white/30 backdrop-blur-lg backdrop-saturate-150
+        supports-[backdrop-filter]:bg-white/40
+        transition-transform duration-500 ease-in-out
+        ${
           showNavbar
             ? "translate-y-0 shadow-lg"
             : "-translate-y-full shadow-none"
         }`}
       >
         <div className="w-full px-2 sm:px-4 md:px-8 lg:px-12 xl:px-20">
-          <div className="flex justify-between items-center h-14 sm:h-16 md:h-20">
+          <div className="flex items-center justify-between h-14 sm:h-16 md:h-[72px] lg:h-20">
             {/* Logo */}
-            <NavLink
-              to="/"
-              onClick={() => setMenuOpen(false)}
-              className="flex-shrink-0"
-            >
-              <img loading="lazy"
+            <NavLink to="/" onClick={closeMenu} className="flex-shrink-0">
+              <img
                 src={assets.logo}
                 alt="Logo"
-                className="h-10 sm:h-12 md:h-14 w-auto transition-all duration-300"
+                loading="lazy"
+                className="h-9 sm:h-11 md:h-12 lg:h-14 w-auto transition-all duration-300"
               />
             </NavLink>
 
-            {/* Desktop Nav */}
-            <div className="hidden md:flex space-x-4 lg:space-x-10 items-center">
-              {navItems.map((item) => (
-                <NavLink
-                  key={item.name}
-                  to={item.href}
-                  className={({ isActive }) =>
-                    `relative text-base sm:text-lg lg:text-[20px] font-medium transition-colors duration-300 ${
-                      isActive
-                        ? "text-[#FA682E]"
-                        : "text-gray-800 hover:text-blue-600"
-                    }`
-                  }
-                >
-                  {({ isActive }) => (
-                    <>
-                      {item.name}
-                      {isActive && (
-                        <span className="absolute left-0 -bottom-1 h-[2px] w-full bg-[#2A99DE] transition-all duration-300" />
-                      )}
-                    </>
-                  )}
-                </NavLink>
-              ))}
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex items-center space-x-4 md:space-x-6 lg:space-x-8 xl:space-x-10">
+              <DesktopNavItems />
             </div>
 
             {/* Mobile Toggle */}
-            <div className="md:hidden pr-6">
+            <div className="md:hidden pr-2 sm:pr-4">
               <button
                 onClick={() => setMenuOpen((prev) => !prev)}
                 className="text-gray-800 focus:outline-none"
                 aria-label="Toggle Menu"
+                aria-expanded={menuOpen}
+                aria-controls="mobile-menu"
               >
                 {menuOpen ? <X size={28} /> : <Menu size={28} />}
               </button>
@@ -181,31 +224,23 @@ export default memo(function Navbar() {
 
         {/* Mobile Drawer */}
         <div
+          id="mobile-menu"
           ref={drawerRef}
-          className={`fixed top-0 right-0 w-4/5 max-w-xs bg-white shadow-lg transform transition-transform duration-300 ease-in-out z-40 ${
-            menuOpen ? "translate-x-0" : "translate-x-full"
-          } overflow-y-auto rounded-l-2xl`}
+          className={`fixed top-0 right-0 z-40
+          w-[85%] sm:w-3/4 max-w-sm
+          bg-white shadow-lg rounded-l-2xl
+          transform transition-transform duration-300 ease-in-out
+          ${menuOpen ? "translate-x-0" : "translate-x-full"}
+          overflow-y-auto`}
         >
           <div className="flex justify-end p-4">
-            <button onClick={() => setMenuOpen(false)} aria-label="Close">
+            <button onClick={closeMenu} aria-label="Close">
               <X size={24} className="text-gray-800" />
             </button>
           </div>
+
           <div className="px-6 pt-2 pb-6 space-y-6">
-            {navItems.map((item) => (
-              <NavLink
-                key={item.name}
-                to={item.href}
-                onClick={() => setMenuOpen(false)}
-                className={({ isActive }) =>
-                  `block text-base sm:text-lg font-semibold transition-colors duration-300 ${
-                    isActive ? "text-[#FA682E]" : "text-gray-900"
-                  }`
-                }
-              >
-                {item.name}
-              </NavLink>
-            ))}
+            <MobileNavItems closeMenu={closeMenu} />
           </div>
         </div>
       </nav>

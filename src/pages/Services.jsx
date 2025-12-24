@@ -1,4 +1,3 @@
-
 import React, { Suspense, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 const CTASection = React.lazy(() => import("../components/CTASection"));
@@ -15,7 +14,7 @@ export default function Services() {
   return (
     <div className="bg-gradient-to-br from-white via-blue-50 to-orange-50 min-h-screen">
       {/* HERO */}
-      <section className=" py-14 mt-16">
+      <section className="pt-10 mt-10">
         <div className="max-w-6xl mx-auto px-6 text-center">
           <h1 className="text-3xl md:text-4xl font-bold text-black mb-2">
             Our Services
@@ -23,8 +22,6 @@ export default function Services() {
           <div className="mx-auto mt-2 w-24 h-1.5 rounded-full bg-gradient-to-r from-orange-400 to-blue-400" />
         </div>
       </section>
-
-      {/* ...existing code... */}
 
       {/* Services List */}
       <div className="max-w-7xl mx-auto px-6 py-12 space-y-20">
@@ -35,7 +32,7 @@ export default function Services() {
                 loading="lazy"
                 src={group.image}
                 alt={group.category}
-                className="w-full md:w-1/3 h-60 object-cover rounded-xl  shadow-md"
+                className="w-full md:w-1/3 h-60 object-cover rounded-xl shadow-md"
               />
               <h2 className="mt-4 md:mt-0 text-3xl font-bold text-orange-600">
                 {group.category}
@@ -46,7 +43,7 @@ export default function Services() {
               {group.services.map((svc, svcIdx) => (
                 <div
                   key={svcIdx}
-                  className="bg-white rounded-xl border border-orange-200  shadow-sm hover:shadow-lg transition-shadow p-6 flex flex-col"
+                  className="bg-white rounded-xl border border-orange-200 shadow-sm hover:shadow-lg transition-shadow p-6 flex flex-col"
                 >
                   <h3 className="text-lg font-semibold text-blue-700 mb-4">
                     {svc.title}
@@ -67,5 +64,6 @@ export default function Services() {
       <Suspense fallback={<div>Loading CTA...</div>}>
         <CTASection />
       </Suspense>
+    </div>
   );
 }

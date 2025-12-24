@@ -1,3 +1,4 @@
+import React from "react";
 const ContactUs = React.memo(() => {
   return (
     <div className="bg-gradient-to-br from-white via-blue-50 to-orange-50 min-h-screen w-full py-20 px-6 flex flex-col lg:flex-row items-start justify-center gap-12">
@@ -15,9 +16,8 @@ const ContactUs = React.memo(() => {
         <form
           action="https://formbold.com/s/oznlP"
           method="POST"
-          className="space-y-6"
+          className="space-y-6 mb-4"
         >
-
           {/* Name */}
           <div>
             <label className="text-sm font-medium text-gray-600">
@@ -80,6 +80,12 @@ const ContactUs = React.memo(() => {
             Send Message
           </button>
         </form>
+        <div>
+          Note: In case of form submission issues, you can also reach us at{" "}
+          <a href="mailto:info@shreejalaelectric.com" className="text-blue-500">
+            info@shreejalaelectric.com
+          </a>
+        </div>
       </div>
 
       {/* LOCATION CARD */}
@@ -113,7 +119,8 @@ const ContactUs = React.memo(() => {
             aria-label="Instagram"
             className="transition-transform hover:scale-110"
           >
-            <img loading="lazy"
+            <img
+              loading="lazy"
               src="https://cdn-icons-png.flaticon.com/512/174/174855.png"
               alt="Instagram"
               className="w-8 h-8"
@@ -126,7 +133,8 @@ const ContactUs = React.memo(() => {
             aria-label="X (Twitter)"
             className="transition-transform hover:scale-110"
           >
-            <img loading="lazy"
+            <img
+              loading="lazy"
               src="https://cdn-icons-png.flaticon.com/512/5968/5968830.png"
               alt="X"
               className="w-8 h-8"
@@ -139,7 +147,8 @@ const ContactUs = React.memo(() => {
             aria-label="LinkedIn"
             className="transition-transform hover:scale-110"
           >
-            <img loading="lazy"
+            <img
+              loading="lazy"
               src="https://cdn-icons-png.flaticon.com/512/174/174857.png"
               alt="LinkedIn"
               className="w-8 h-8"
@@ -149,6 +158,6 @@ const ContactUs = React.memo(() => {
       </div>
     </div>
   );
-};
+});
 
 export default ContactUs;

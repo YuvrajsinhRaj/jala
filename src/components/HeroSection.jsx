@@ -1,3 +1,4 @@
+import React from "react";
 import { motion } from "framer-motion";
 import { assets } from "../assets/assets.js";
 
@@ -83,7 +84,7 @@ const HeroSection = React.memo(() => {
           </a>
           <a
             href="/contact"
-            className="border-2 border-white text-white hover:bg-white hover:text-black rounded-full transition duration-300 px-6 py-3 text-lg font-semibold"
+            className="border-2 border-white text-white hover:bg-blue-500  rounded-full transition duration-300 px-6 py-3 text-lg font-semibold"
           >
             Contact Us
           </a>

@@ -15,7 +15,7 @@ function App() {
       <ScrollToTop />
       <Navbar />
       <Suspense
-        fallback={<div className="text-center py-20 text-xl">Loading...</div>}
+        fallback={<div className="text-center  text-xl">Loading...</div>}
       >
         <Routes>
           <Route path="/" element={<Home />} />
